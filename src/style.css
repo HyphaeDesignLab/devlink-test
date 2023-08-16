@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+span, div, p {
+    font-family: "Courier New", sans-serif;
+}
+h1 { color: red; }
+h2.custom-h2 { color: #02bd32; }
