@@ -1,5 +1,5 @@
 import * as React from "react";
-export declare type CSSModules = {
+export type CSSModules = {
   [sel: string]: string;
 };
 export declare namespace Basic {
