@@ -10,6 +10,7 @@ export function ProjectWithSlots({
   projectDetailsText2 = "details",
   projectDetailsProp1,
   richText = "",
+    onMoreInfoClick
 }) {
   return (
     <_Component className={_utils.cx(_styles, "project")} tag="div">
@@ -41,6 +42,7 @@ export function ProjectWithSlots({
         options={{
           href: "#",
         }}
+        onClick={onMoreInfoClick}
       >
         {projectDetailsText}
       </_Builtin.Link>
