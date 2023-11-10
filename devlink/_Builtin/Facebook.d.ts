@@ -1,5 +1,5 @@
 import * as React from "react";
-declare type FacebookProps = React.PropsWithChildren<{
+type FacebookProps = React.PropsWithChildren<{
   className?: string;
   layout?: string;
   width?: number;
@@ -15,5 +15,5 @@ export declare function Facebook({
   url,
   locale,
   ...props
-}: FacebookProps): any;
+}: FacebookProps): React.JSX.Element;
 export {};

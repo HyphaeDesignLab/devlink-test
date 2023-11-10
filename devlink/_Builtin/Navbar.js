@@ -27,15 +27,17 @@ export const NavbarContext = React.createContext({
   duration: 400,
   easing2: "ease",
   easing: "ease",
-  getBodyHeight: () => {},
-  getOverlayHeight: () => {},
+  getBodyHeight: () => undefined,
+  getOverlayHeight: () => {
+    return undefined;
+  },
   isOpen: false,
   noScroll: false,
-  toggleOpen: () => {},
+  toggleOpen: () => undefined,
   navbarMounted: false,
   menu: undefined,
   root: undefined,
-  setFocusedLink: () => {},
+  setFocusedLink: () => undefined,
 });
 function getAnimationKeyframes({ axis = "Y", start, end }) {
   const t = `translate${axis}`;
@@ -251,16 +253,18 @@ function NavbarOverlay({ children }) {
     },
     [toggleOpen]
   );
+  const overlayHeight = getOverlayHeight();
   return (
     <div
       className="w-nav-overlay"
       id="w-nav-overlay"
       style={{
         display: isOpen ? "block" : "none",
-        height: getOverlayHeight(),
+        height: overlayHeight ? overlayHeight : undefined,
         width: isOpen ? "100%" : 0,
       }}
       onClick={overlayToggleOpen}
+      onKeyDown={overlayToggleOpen}
     >
       {children}
     </div>

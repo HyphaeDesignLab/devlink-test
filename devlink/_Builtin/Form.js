@@ -1,5 +1,8 @@
 import React from "react";
 import { loadScript } from "../utils";
+function onKeyDownInputHandlers(e) {
+  e.stopPropagation();
+}
 export function FormWrapper({
   className = "",
   state: initialState = "normal",
@@ -8,6 +11,8 @@ export function FormWrapper({
   ...props
 }) {
   const [state, setState] = React.useState(initialState);
+  const formName =
+    (children.find((c) => c.type === FormForm)?.props)["data-name"] ?? "Form";
   return React.createElement(
     "div",
     {
@@ -16,8 +21,13 @@ export function FormWrapper({
     },
     React.Children.map(children, (child) => {
       if (child.type === FormForm) {
+        const style = {};
+        if (state === "success") {
+          style.display = "none";
+        }
         return React.cloneElement(child, {
           ...child.props,
+          style,
           onSubmit: (e) => {
             try {
               e.preventDefault();
@@ -29,25 +39,46 @@ export function FormWrapper({
               }
               if (onSubmit) {
                 onSubmit(e);
-                setState("success");
               }
+              setState("success");
             } catch (err) {
               setState("error");
               throw err;
             }
           },
+          "aria-label": formName,
         });
       }
       if (child.type === FormSuccessMessage) {
+        const style = {};
+        if (state === "success") {
+          style.display = "block";
+        }
+        if (state === "error") {
+          style.display = "none";
+        }
         return React.cloneElement(child, {
           ...child.props,
-          style: { display: state == "success" ? "block" : "none" },
+          style,
+          tabIndex: -1,
+          role: "region",
+          "aria-label": `${formName} success`,
         });
       }
       if (child.type === FormErrorMessage) {
+        const style = {};
+        if (state === "success") {
+          style.display = "none";
+        }
+        if (state === "error") {
+          style.display = "block";
+        }
         return React.cloneElement(child, {
           ...child.props,
-          style: { display: state == "error" ? "block" : "none" },
+          tabIndex: -1,
+          role: "region",
+          "aria-label": `${formName} failure`,
+          style,
         });
       }
       return child;
@@ -62,16 +93,16 @@ export function FormBlockLabel(props) {
 }
 export function FormTextInput({ className = "", ...props }) {
   return React.createElement("input", {
-    type: "text",
-    className: className + " w-input",
     ...props,
+    className: className + " w-input",
+    onKeyDown: onKeyDownInputHandlers,
   });
 }
 export function FormTextarea({ className = "", ...props }) {
-  return React.createElement("input", {
-    type: "textarea",
-    className: className + " w-input",
+  return React.createElement("textarea", {
     ...props,
+    className: className + " w-input",
+    onKeyDown: onKeyDownInputHandlers,
   });
 }
 export function FormInlineLabel({ className = "", ...props }) {
@@ -135,6 +166,7 @@ export function FormBooleanInput({
       setIsFocusedVisible(false);
       wasClicked.current = false;
     },
+    onKeyDown: onKeyDownInputHandlers,
   };
   if (inputType === "custom") {
     const pseudoModeClasses = `${isChecked ? ` ${CHECKED_CLASS}` : ""}${
@@ -173,8 +205,8 @@ const FileUploadContext = React.createContext({
   files: null,
   error: null,
   maxSize: MAX_FILE_SIZE_DEFAULT,
-  setFiles: () => {},
-  setError: () => {},
+  setFiles: () => undefined,
+  setError: () => undefined,
 });
 export function FormFileUploadWrapper({
   maxSize = MAX_FILE_SIZE_DEFAULT,
@@ -210,9 +242,10 @@ export function FormFileUploadDefault({ className = "", ...props }) {
 export function FormFileUploadInput({ className = "", ...props }) {
   const { setFiles, setError, maxSize } = React.useContext(FileUploadContext);
   return React.createElement("input", {
-    type: "file",
-    className: className + " w-file-upload-input",
     ...props,
+    className: className + " w-file-upload-input",
+    type: "file",
+    onKeyDown: onKeyDownInputHandlers,
     onChange: (e) => {
       if (e.target.files) {
         if (e.target.files[0].size <= maxSize) {
@@ -292,7 +325,7 @@ export function FormFileUploadSuccess({ className = "", ...props }) {
     ...props,
     style: {
       ...props.style,
-      display: !!files && !error ? "block" : "none",
+      display: Boolean(files) && !error ? "block" : "none",
     },
   });
 }
@@ -330,7 +363,7 @@ export function FormFileUploadError({ className = "", ...props }) {
     ...props,
     style: {
       ...props.style,
-      display: !!error ? "block" : "none",
+      display: error ? "block" : "none",
     },
   });
 }
@@ -347,10 +380,11 @@ export function FormFileUploadErrorMsg({ errors, className = "", ...props }) {
 }
 export function FormButton({ className = "", value, ...props }) {
   return React.createElement("input", {
+    ...props,
     type: "submit",
     value: value ?? "",
     className: className + " w-button",
-    ...props,
+    onKeyDown: onKeyDownInputHandlers,
   });
 }
 export function SearchForm(props) {
@@ -358,17 +392,19 @@ export function SearchForm(props) {
 }
 export function SearchInput({ className = "", ...props }) {
   return React.createElement("input", {
+    ...props,
     type: "text",
     className: className + " w-input",
-    ...props,
+    onKeyDown: onKeyDownInputHandlers,
   });
 }
 export function SearchButton({ value = "", className = "", ...props }) {
   return React.createElement("input", {
+    ...props,
     type: "submit",
     value,
     className: className + " w-button",
-    ...props,
+    onKeyDown: onKeyDownInputHandlers,
   });
 }
 export function FormSuccessMessage({ className = "", ...props }) {

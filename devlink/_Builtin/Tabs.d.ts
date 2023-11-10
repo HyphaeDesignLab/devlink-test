@@ -1,7 +1,7 @@
 import * as React from "react";
 import { EASING_FUNCTIONS } from "../utils";
 import { Props } from "./Basic";
-declare type TabsWrapperProps = Props<
+type TabsWrapperProps = Props<
   "div",
   {
     current: string;
@@ -20,8 +20,8 @@ export declare function TabsWrapper({
   easing,
   current: initialCurrent,
   ...props
-}: TabsWrapperProps): any;
-declare type TabsMenuProps = {
+}: TabsWrapperProps): React.JSX.Element;
+type TabsMenuProps = {
   tag?: React.ElementType;
   className?: string;
   children?: React.ReactElement<TabsLinkProps>[];
@@ -30,15 +30,22 @@ export declare function TabsMenu({
   tag,
   className,
   ...props
-}: TabsMenuProps): any;
-declare type TabsLinkProps = Props<
+}: TabsMenuProps): React.ReactElement<
+  any,
+  string | React.JSXElementConstructor<any>
+>;
+type TabsLinkProps = Props<
   "a",
   {
     "data-w-tab": string;
   }
 >;
-export declare function TabsLink({ className, ...props }: TabsLinkProps): any;
-declare type TabsContentProps = {
+export declare function TabsLink({
+  className,
+  children,
+  ...props
+}: TabsLinkProps): React.JSX.Element;
+type TabsContentProps = {
   tag?: React.ElementType;
   className?: string;
   children?:
@@ -49,8 +56,11 @@ export declare function TabsContent({
   tag,
   className,
   ...props
-}: TabsContentProps): any;
-declare type TabsPaneProps = React.PropsWithChildren<{
+}: TabsContentProps): React.ReactElement<
+  any,
+  string | React.JSXElementConstructor<any>
+>;
+type TabsPaneProps = React.PropsWithChildren<{
   tag?: React.ElementType;
   className?: string;
   "data-w-tab": string;
@@ -59,5 +69,8 @@ export declare function TabsPane({
   tag,
   className,
   ...props
-}: TabsPaneProps): any;
+}: TabsPaneProps): React.ReactElement<
+  any,
+  string | React.JSXElementConstructor<any>
+>;
 export {};

@@ -1,7 +1,7 @@
 import * as React from "react";
-declare type TwitterSize = "m" | "l";
-declare type TwitterMode = "follow" | "tweet";
-declare type TwitterProps = React.PropsWithChildren<{
+type TwitterSize = "m" | "l";
+type TwitterMode = "follow" | "tweet";
+type TwitterProps = React.PropsWithChildren<{
   className?: string;
   mode?: TwitterMode;
   url?: string;
@@ -20,5 +20,5 @@ export declare function Twitter({
   size,
   text,
   ...props
-}: TwitterProps): any;
+}: TwitterProps): React.JSX.Element;
 export {};

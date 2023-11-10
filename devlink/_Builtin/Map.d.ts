@@ -1,3 +1,4 @@
+/// <reference types="react" />
 declare global {
   interface Window {
     google: {
@@ -5,7 +6,7 @@ declare global {
     };
   }
 }
-declare type MapWidgetProps = {
+type MapWidgetProps = {
   className?: string;
   apiKey: string;
   zoom?: number;
@@ -27,5 +28,5 @@ export declare function MapWidget({
   enableTouch,
   className,
   ...props
-}: MapWidgetProps): any;
+}: MapWidgetProps): JSX.Element;
 export {};

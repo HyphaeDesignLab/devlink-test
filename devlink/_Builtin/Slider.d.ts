@@ -1,6 +1,6 @@
 import * as React from "react";
 import { EASING_FUNCTIONS } from "../utils";
-declare type SliderConfig = {
+type SliderConfig = {
   navSpacing: number;
   navShadow: boolean;
   autoplay: boolean;
@@ -17,13 +17,28 @@ declare type SliderConfig = {
   autoMax: number;
   navInvert: boolean;
 };
-export declare const SliderContext: any;
-declare type SliderChildrenType =
+type SlideState = {
+  current: number;
+  previous: number;
+};
+export declare const SliderContext: React.Context<
+  SliderConfig & {
+    slideAmount: number;
+    setSlideAmount: React.Dispatch<React.SetStateAction<number>>;
+    slide: SlideState;
+    setCurrentSlide: (current: number) => void;
+    goToNextSlide: () => void;
+    goToPreviousSlide: () => void;
+    isAutoplayPaused: boolean;
+    setAutoplayPause: React.Dispatch<React.SetStateAction<boolean>>;
+  }
+>;
+type SliderChildrenType =
   | SliderSlideProps
   | SliderArrowProps
   | SliderNavProps
   | SliderMaskProps;
-declare type SliderWrapperProps = SliderConfig & {
+type SliderWrapperProps = SliderConfig & {
   className?: string;
   children?:
     | React.ReactElement<SliderChildrenType>[]
@@ -32,16 +47,16 @@ declare type SliderWrapperProps = SliderConfig & {
 export declare function SliderWrapper({
   className,
   ...props
-}: SliderWrapperProps): any;
-declare type SliderMaskProps = React.PropsWithChildren<{
+}: SliderWrapperProps): React.JSX.Element;
+type SliderMaskProps = React.PropsWithChildren<{
   className?: string;
 }>;
 export declare function SliderMask({
   className,
   children,
   ...props
-}: SliderMaskProps): any;
-declare type SliderSlideProps = React.PropsWithChildren<{
+}: SliderMaskProps): React.JSX.Element;
+type SliderSlideProps = React.PropsWithChildren<{
   style?: React.CSSProperties;
   tag?: string;
   className?: string;
@@ -53,8 +68,8 @@ export declare function SliderSlide({
   style,
   index,
   ...props
-}: SliderSlideProps): any;
-declare type SliderArrowProps = React.PropsWithChildren<{
+}: SliderSlideProps): React.DOMElement<any, any>;
+type SliderArrowProps = React.PropsWithChildren<{
   className?: string;
   dir: "left" | "right";
 }>;
@@ -63,9 +78,12 @@ export declare function SliderArrow({
   dir,
   children,
   ...props
-}: SliderArrowProps): any;
-declare type SliderNavProps = {
+}: SliderArrowProps): React.JSX.Element;
+type SliderNavProps = {
   className?: string;
 };
-export declare function SliderNav({ className, ...props }: SliderNavProps): any;
+export declare function SliderNav({
+  className,
+  ...props
+}: SliderNavProps): React.JSX.Element;
 export {};
