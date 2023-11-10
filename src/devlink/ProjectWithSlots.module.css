@@ -1,0 +1,40 @@
+.project {
+  margin: 21px;
+  padding: 14px;
+  border: 1px solid black;
+}
+
+.project-top-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  grid-column-gap: 1%;
+  grid-row-gap: 1%;
+
+  font-size: 20px;
+  line-height: 1;
+}
+
+.project-title {
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  line-height: 1;
+}
+
+.project-dates {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.paragraph {
+  margin-top: 10px;
+}
+
+.project-details {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: hsla(208.00000000000003, 9.76%, 28.55%, 1.00);
+}
