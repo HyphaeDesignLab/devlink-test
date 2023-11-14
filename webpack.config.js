@@ -23,8 +23,11 @@ module.exports = {
         options: {
           presets: ['@babel/preset-env', '@babel/preset-react']
        }
-      },
-      {
+      }, {
+        test: /\.ts$/, // Apply the loader to TypeScript files
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      }, {
         test: /\.(jpg|png|svg)$/,
         loader: 'url-loader',
       },
