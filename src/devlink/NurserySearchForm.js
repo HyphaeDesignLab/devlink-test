@@ -13,7 +13,7 @@ export function NurserySearchForm({ as: _Component = _Builtin.FormWrapper }) {
         method="get"
         id="email-form"
       >
-        <FormField fieldLabel="Nursery Name" />
+        <FormField fieldLabel="Nursery" />
         <FormField fieldLabel="Location" />
         <FormField fieldLabel="Distance" />
         <FormField fieldLabel="Date" />
