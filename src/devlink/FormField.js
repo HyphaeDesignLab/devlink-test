@@ -5,19 +5,17 @@ import _styles from "./FormField.module.css";
 
 export function FormField({
   as: _Component = _Builtin.Block,
-  onClick = {},
-  fieldLabel = "Input 1",
-  onChange,
+  label = "field name",
+  inputId = "field-input-id",
 }) {
   return (
     <_Component
       className={_utils.cx(_styles, "field")}
       tag="div"
       component="FormField"
-      {...onChange}
     >
       <_Builtin.FormBlockLabel htmlFor="nursery-name">
-        {fieldLabel}
+        {label}
       </_Builtin.FormBlockLabel>
       <_Builtin.FormTextInput
         className={_utils.cx(_styles, "input")}
@@ -28,8 +26,7 @@ export function FormField({
         type="text"
         disabled={false}
         required={false}
-        id="nursery-name"
-        {...onClick}
+        id={inputId}
       />
     </_Component>
   );
