@@ -4,8 +4,7 @@ import * as Types from "./types";
 declare function ResultItem(props: {
   as?: React.ElementType;
   text?: React.ReactNode;
-  component?: Types.Devlink.RuntimeProps;
-  isSample?: Types.Devlink.RuntimeProps;
-  resultItemSlot?: Types.Devlink.Slot;
   isVisible?: Types.Visibility.VisibilityConditions;
+  props1?: Types.Devlink.RuntimeProps;
+  props2?: Types.Devlink.RuntimeProps;
 }): React.JSX.Element;

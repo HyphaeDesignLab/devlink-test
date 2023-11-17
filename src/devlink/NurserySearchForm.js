@@ -20,10 +20,7 @@ export function NurserySearchForm({
         method="get"
         id="email-form"
       >
-        <FormField onChange={onSearch} fieldLabel="Nursery Name" />
-        <FormField fieldLabel="Location" />
-        <FormField fieldLabel="Distance" />
-        <FormField fieldLabel="Date" />
+        <FormField label="Date" inputId="date" />
         <_Builtin.FormButton
           type="submit"
           value="Submit"

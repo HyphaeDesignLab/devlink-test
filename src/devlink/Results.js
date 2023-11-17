@@ -7,9 +7,6 @@ import _styles from "./Results.module.css";
 export function Results({
   as: _Component = _Builtin.Block,
   showSampleResult = true,
-  prop1,
-  slot1,
-  children = "",
 }) {
   return (
     <_Component
@@ -20,7 +17,7 @@ export function Results({
       <_Builtin.Heading tag="h3">{"Results:"}</_Builtin.Heading>
       <_Builtin.Block tag="div">{"no results found"}</_Builtin.Block>
       <ResultItem isVisible={showSampleResult} text="Sample Result" />
-      <_Builtin.Block tag="div">{children}</_Builtin.Block>
+      <_Builtin.Block tag="div" />
     </_Component>
   );
 }
