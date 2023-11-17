@@ -7,6 +7,7 @@ export function FormField({
   as: _Component = _Builtin.Block,
   label = "field name",
   inputId = "field-input-id",
+  inputProps,
 }) {
   return (
     <_Component
@@ -14,7 +15,7 @@ export function FormField({
       tag="div"
       component="FormField"
     >
-      <_Builtin.FormBlockLabel htmlFor="nursery-name">
+      <_Builtin.FormBlockLabel htmlFor={inputId}>
         {label}
       </_Builtin.FormBlockLabel>
       <_Builtin.FormTextInput
@@ -27,6 +28,7 @@ export function FormField({
         disabled={false}
         required={false}
         id={inputId}
+        {...inputProps}
       />
     </_Component>
   );

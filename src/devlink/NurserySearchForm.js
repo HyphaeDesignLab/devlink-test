@@ -6,13 +6,12 @@ import _styles from "./NurserySearchForm.module.css";
 
 export function NurserySearchForm({
   as: _Component = _Builtin.FormWrapper,
-  onSearch = {},
+  props,
 }) {
   return (
     <_Component
       className={_utils.cx(_styles, "search-form")}
       component="NurserySearchForm"
-      {...onSearch}
     >
       <_Builtin.FormForm
         name="email-form"
@@ -20,7 +19,7 @@ export function NurserySearchForm({
         method="get"
         id="email-form"
       >
-        <FormField label="Date" inputId="date" />
+        <FormField inputProps={props} label="Date" inputId="date" />
         <_Builtin.FormButton
           type="submit"
           value="Submit"
