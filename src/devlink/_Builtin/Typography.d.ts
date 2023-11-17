@@ -160,7 +160,7 @@ export declare function Heading({
     "aria-valuetext"?: string | undefined;
     dangerouslySetInnerHTML?:
       | {
-          __html: string | TrustedHTML;
+          __html: string;
         }
       | undefined;
     onCopy?: React.ClipboardEventHandler<HTMLHeadingElement> | undefined;

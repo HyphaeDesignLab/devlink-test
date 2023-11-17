@@ -322,7 +322,7 @@ export declare function Icon({
     children?: React.ReactNode;
     dangerouslySetInnerHTML?:
       | {
-          __html: string | TrustedHTML;
+          __html: string;
         }
       | undefined;
     onCopy?: React.ClipboardEventHandler<HTMLDivElement> | undefined;

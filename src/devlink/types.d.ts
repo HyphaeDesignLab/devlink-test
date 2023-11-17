@@ -14,6 +14,7 @@ export declare namespace Basic {
     href: string;
   } & PreloadedAndTargetedLink;
   export type RichTextChildren = React.ReactNode;
+  export type IdTextInput = string;
   export {};
 }
 export declare namespace Asset {
