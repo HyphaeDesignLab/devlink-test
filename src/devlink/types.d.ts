@@ -30,3 +30,7 @@ export declare namespace Embed {
 export declare namespace Visibility {
   type VisibilityConditions = boolean;
 }
+export declare namespace Devlink {
+  type RuntimeProps = {};
+  type Slot = {};
+}
