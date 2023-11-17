@@ -7,10 +7,18 @@ export function FormField({
   as: _Component = _Builtin.Block,
   onClick = {},
   fieldLabel = "Input 1",
+  onChange,
 }) {
   return (
-    <_Component className={_utils.cx(_styles, "field")} tag="div">
-      <_Builtin.FormBlockLabel>{fieldLabel}</_Builtin.FormBlockLabel>
+    <_Component
+      className={_utils.cx(_styles, "field")}
+      tag="div"
+      component="FormField"
+      {...onChange}
+    >
+      <_Builtin.FormBlockLabel htmlFor="nursery-name">
+        {fieldLabel}
+      </_Builtin.FormBlockLabel>
       <_Builtin.FormTextInput
         className={_utils.cx(_styles, "input")}
         autoFocus={false}

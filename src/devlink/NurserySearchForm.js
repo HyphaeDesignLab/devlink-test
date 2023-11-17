@@ -4,16 +4,23 @@ import { FormField } from "./FormField";
 import * as _utils from "./utils";
 import _styles from "./NurserySearchForm.module.css";
 
-export function NurserySearchForm({ as: _Component = _Builtin.FormWrapper }) {
+export function NurserySearchForm({
+  as: _Component = _Builtin.FormWrapper,
+  onSearch = {},
+}) {
   return (
-    <_Component className={_utils.cx(_styles, "form-block")}>
+    <_Component
+      className={_utils.cx(_styles, "search-form")}
+      component="NurserySearchForm"
+      {...onSearch}
+    >
       <_Builtin.FormForm
         name="email-form"
         data-name="Email Form"
         method="get"
         id="email-form"
       >
-        <FormField fieldLabel="Nursery" />
+        <FormField onChange={onSearch} fieldLabel="Nursery Name" />
         <FormField fieldLabel="Location" />
         <FormField fieldLabel="Distance" />
         <FormField fieldLabel="Date" />

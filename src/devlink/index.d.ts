@@ -8,5 +8,5 @@ export * from "./devlink";
 export * from "./FormField";
 export * from "./Nav";
 export * from "./NurserySearchForm";
-export * from "./Project";
-export * from "./ProjectWithSlots";
+export * from "./ResultItem";
+export * from "./Results";

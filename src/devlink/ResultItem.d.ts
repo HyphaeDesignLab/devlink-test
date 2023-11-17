@@ -1,7 +1,8 @@
 import * as React from "react";
 import * as Types from "./types";
 
-declare function NurserySearchForm(props: {
+declare function ResultItem(props: {
   as?: React.ElementType;
-  onSearch?: Types.Devlink.RuntimeProps;
+  text?: React.ReactNode;
+  component?: Types.Devlink.RuntimeProps;
 }): React.JSX.Element;

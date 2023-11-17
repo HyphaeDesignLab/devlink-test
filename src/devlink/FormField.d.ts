@@ -5,4 +5,5 @@ declare function FormField(props: {
   as?: React.ElementType;
   onClick?: Types.Devlink.RuntimeProps;
   fieldLabel?: React.ReactNode;
+  onChange?: Types.Devlink.RuntimeProps;
 }): React.JSX.Element;
